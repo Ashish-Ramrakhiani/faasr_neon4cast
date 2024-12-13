@@ -1,0 +1,46 @@
+{
+    "ComputeServers": {
+        "My_GitHub_Account": {
+            "FaaSType": "GitHubActions",
+            "UserName": "Ashish-Ramrakhiani",
+            "ActionRepoName": "faasr_neon4cast_actions",
+            "Branch": "main"
+        }
+    },
+    "DataStores": {
+        "My_Minio_Bucket": {
+            "Endpoint": "https://s3.faasr.io",
+            "Bucket": "bucket5",
+            "Writable": "TRUE"
+        }
+    },
+    "FunctionList": {
+        "generate_aquatics_forecast": {
+            "FunctionName": "generate_aquatics_forecast",
+            "FaaSServer": "My_GitHub_Account",
+            "Arguments": {
+                "output_file": "aquatics.csv",
+                "remote_folder": "data"
+            },
+            "InvokeNext": "score_aquatics_forecast"
+        },
+        "score_aquatics_forecast": {
+            "FunctionName": "score_aquatics_forecast",
+            "FaaSServer": "My_GitHub_Account",
+            "Arguments": {
+                "output_file": "score.csv",
+                "remote_folder": "data",
+                "forecast_file": "aquatics.csv"
+            }
+        }
+    },
+    "FunctionGitRepo": {
+        "generate_aquatics_forecast": "Ashish-Ramrakhiani/faasr_neon4cast",
+        "score_aquatics_forecast": "Ashish-Ramrakhiani/faasr_neon4cast"
+    },
+    "FunctionInvoke": "generate_aquatics_forecast",
+    "FaaSrLog": "FaaSrLog_neon",
+    "LoggingDataStore": "My_Minio_Bucket",
+    "DefaultDataStore": "My_Minio_Bucket"
+}
+
