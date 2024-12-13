@@ -23,5 +23,4 @@ score_aquatics_forecast <- function(output_file, remote_folder,forecast_file) {
   log_msg <- paste0("Generated forecast successfully")
   faasr_log(log_msg)
   
-  return(scores)
 }
