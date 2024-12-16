@@ -2,7 +2,6 @@ generate_aquatics_forecast <- function(output_file,remote_folder) {
  
   library(neon4cast)
   library(tidyverse)
-  library(fable)
   library(tsibble)
   
   target <- read_csv("https://data.ecoforecast.org/neon4cast-targets/aquatics/aquatics-targets.csv.gz")
