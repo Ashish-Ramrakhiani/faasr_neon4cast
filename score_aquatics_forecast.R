@@ -3,6 +3,7 @@ score_aquatics_forecast <- function(output_file, remote_folder,forecast_file) {
   library(tidyverse)
   
   
+  faasr_get_file(remote_folder = "data",remote_file = forecast_file,local_folder = "data",local_file = forecast_file)
   forecast <- read_csv(file.path("data",forecast_file))
   target <- read_csv("https://data.ecoforecast.org/neon4cast-targets/aquatics/aquatics-targets.csv.gz")
   
