@@ -1,5 +1,6 @@
 score_aquatics_forecast <- function(output_file, remote_folder,forecast_file) {
   library(neon4cast)
+  library(score4cast)
   library(tidyverse)
   
   
