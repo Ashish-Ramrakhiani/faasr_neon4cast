@@ -3,7 +3,7 @@ score_aquatics_forecast <- function(output_file, remote_folder,forecast_file) {
   library(tidyverse)
   
   
-  forecast <- read_csv(file.path(forecast_file))
+  forecast <- read_csv(file.path("data",forecast_file))
   target <- read_csv("https://data.ecoforecast.org/neon4cast-targets/aquatics/aquatics-targets.csv.gz")
   
   scores <- score(forecast, target)
@@ -15,8 +15,8 @@ score_aquatics_forecast <- function(output_file, remote_folder,forecast_file) {
       mean_logs = mean(logs, na.rm = TRUE)
     )
   
-  write_csv(summary_scores, file.path(output_file))
-  faasr_put_file(local_file=file.path(output_file), 
+  write_csv(summary_scores, file.path("data",output_file))
+  faasr_put_file(local_file=file.path("data",output_file), 
                  remote_folder=remote_folder, 
                  remote_file=output_file)
   

@@ -58,8 +58,8 @@ generate_aquatics_forecast <- function(output_file, remote_folder) {
   forecast <- bind_rows(oxygen_fc, temperature_fc)
   
   # Write and upload results
-  write_csv(forecast, file.path(output_file))
-  faasr_put_file(local_file=file.path(output_file), 
+  write_csv(forecast, file.path("data",output_file))
+  faasr_put_file(local_file=file.path("data",output_file), 
                  remote_folder=remote_folder, 
                  remote_file=output_file)
   
