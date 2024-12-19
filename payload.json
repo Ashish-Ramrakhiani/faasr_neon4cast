@@ -21,26 +21,24 @@
             "Arguments": {
                 "output_file": "aquatics.csv",
                 "remote_folder": "data"
-            },
-            "InvokeNext": "score_aquatics_forecast"
-        },
-        "score_aquatics_forecast": {
-            "FunctionName": "score_aquatics_forecast",
-            "FaaSServer": "My_GitHub_Account",
-            "Arguments": {
-                "output_file": "score.csv",
-                "remote_folder": "data",
-                "forecast_file": "aquatics.csv"
             }
         }
     },
+    "ActionContainers": {
+        "generate_aquatics_forecast": "ghcr.io/faasr/github-actions-tidyverse:1.4.1"
+    },
     "FunctionGitRepo": {
-        "generate_aquatics_forecast": "Ashish-Ramrakhiani/faasr_neon4cast",
-        "score_aquatics_forecast": "Ashish-Ramrakhiani/faasr_neon4cast"
+        "generate_aquatics_forecast": "Ashish-Ramrakhiani/faasr_neon4cast"
     },
     "FunctionInvoke": "generate_aquatics_forecast",
-    "FaaSrLog": "FaaSrLog_neon",
+    "FaaSrLog": "FaaSrLog",
     "LoggingDataStore": "My_Minio_Bucket",
-    "DefaultDataStore": "My_Minio_Bucket"
+    "DefaultDataStore": "My_Minio_Bucket",
+    "FunctionGitHubPackage": {
+        "generate_aquatics_forecast": [
+            "tidyverts/tsibble",
+            "eco4cast/neon4cast"
+        ]
+    }
 }
 
