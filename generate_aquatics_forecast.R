@@ -4,7 +4,7 @@ generate_aquatics_forecast <- function(output_file, remote_folder) {
   library(neon4cast)
 
   if (!dir.exists("data")) {
-    dir.create(foldername, recursive = TRUE)
+    dir.create("data", recursive = TRUE)
   }
   
   # Read and process data
