@@ -3,6 +3,9 @@ generate_aquatics_forecast <- function(output_file, remote_folder) {
   library(tidyverse)
   library(neon4cast)
 
+  if (!dir.exists("data")) {
+    dir.create(foldername, recursive = TRUE)
+  }
   
   # Read and process data
   target <- read_csv("https://data.ecoforecast.org/neon4cast-targets/aquatics/aquatics-targets.csv.gz")
@@ -58,7 +61,7 @@ generate_aquatics_forecast <- function(output_file, remote_folder) {
   forecast <- bind_rows(oxygen_fc, temperature_fc)
   
   # Write and upload results
-  write_csv(forecast, file.path("/data",output_file))
+  write_csv(forecast, file.path("data",output_file))
   faasr_put_file(local_file=file.path("data",output_file), 
                  remote_folder=remote_folder, 
                  remote_file=output_file)

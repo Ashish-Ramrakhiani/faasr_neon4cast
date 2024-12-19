@@ -15,7 +15,7 @@ score_aquatics_forecast <- function(output_file, remote_folder,forecast_file) {
       mean_logs = mean(logs, na.rm = TRUE)
     )
   
-  write_csv(summary_scores, file.path("/data",output_file))
+  write_csv(summary_scores, file.path("data",output_file))
   faasr_put_file(local_file=file.path("data",output_file), 
                  remote_folder=remote_folder, 
                  remote_file=output_file)
